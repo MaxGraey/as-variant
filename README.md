@@ -1,6 +1,7 @@
 Variant Data Type for AssemblyScript
 ===
 
+[![Build Status](https://github.com/MaxGraey/as-variant/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/MaxGraey/as-variant/actions/workflows/test.yml?query=branch%3Amain)
 [![npm](https://img.shields.io/npm/v/as-variant.svg?color=007acc&logo=npm)](https://www.npmjs.com/package/as-variant)
 
 Supports any builtin types like i32, bool, string and any custom classes (managed and unmanaged).
