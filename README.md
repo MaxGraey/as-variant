@@ -12,18 +12,18 @@ import { Variant } from 'as-variant'
 
 class Foo {}
 
-let vNum = Variant.from(123)      // stored as i32
-let vStr = Variant.from('hello')  // stored as string
-let vFoo = Variant.from(new Foo())  // stored as string
+let vNum = Variant.from(123)       // stored as i32
+let vStr = Variant.from('hello')   // stored as string
+let vFoo = Variant.from(new Foo()) // stored as string
 
-vNum.set(2.0)                     // now stored as f64
+vNum.set(2.0)                      // now stored as f64
 
-assert(vNum.is<f64>() == true)    // ok
-assert(vStr.is<f64>() == false)   // ok
-assert(vStr.is<string>() == true) // ok
+assert(vNum.is<f64>() == true)     // ok
+assert(vStr.is<f64>() == false)    // ok
+assert(vStr.is<string>() == true)  // ok
 
-let valF64 = vNum.get<f64>()      // safely extract value
-let tryStr = vNum.get<string>()   // will throw exception!
+let valF64 = vNum.get<f64>()       // safely extract value
+let tryStr = vNum.get<string>()    // will throw exception!
 ```
 
 ### Use as value for Any Dynamic Dictionary
