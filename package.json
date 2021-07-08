@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "ascMain": "assembly/index.ts",
   "main": "assembly/index.ts",
+  "description": "Variant data type for AssemblyScript.",
   "keywords": [
     "any",
     "type",

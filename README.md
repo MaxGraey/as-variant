@@ -1,12 +1,17 @@
 ## Variant Type for AssemblyScript
 
+Supports any builtin types like i32, bool, string and any custom classes.
+
 ### Basic Usage
 
 ```ts
 import { Variant } from 'as-variant'
 
+class Foo {}
+
 let vNum = Variant.from(123)      // stored as i32
 let vStr = Variant.from('hello')  // stored as string
+let vFoo = Variant.from(new Foo())  // stored as string
 
 vNum.set(2.0)                     // now stored as f64
 
