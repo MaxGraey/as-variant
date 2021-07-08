@@ -86,11 +86,11 @@ export class Variant {
   }
 
   @inline uncheckedGet<T>(): T {
-    let type!: T, val = this.value;
-    if (type instanceof f32) {
+    let value!: T, val = this.value;
+    if (value instanceof f32) {
       // @ts-ignore
       return reinterpret<f32>(<u32>val);
-    } else if (type instanceof f64) {
+    } else if (value instanceof f64) {
       // @ts-ignore
       return reinterpret<f64>(val);
     } else if (isReference<T>()) {
@@ -103,21 +103,21 @@ export class Variant {
 
   @inline is<T>(): bool {
     let
-      type!: T,
+      value!: T,
       ty = this.discriminator;
 
-         if (type instanceof bool) return ty == VariantTy.Bool;
-    else if (type instanceof i8)   return ty == VariantTy.I8;
-    else if (type instanceof i16)  return ty == VariantTy.I16;
-    else if (type instanceof i32)  return ty == VariantTy.I32;
-    else if (type instanceof i64)  return ty == VariantTy.I64;
-    else if (type instanceof u8)   return ty == VariantTy.U8;
-    else if (type instanceof u16)  return ty == VariantTy.U16;
-    else if (type instanceof u32)  return ty == VariantTy.U32;
-    else if (type instanceof u64)  return ty == VariantTy.U64;
-    else if (type instanceof f32)  return ty == VariantTy.F32;
-    else if (type instanceof f64)  return ty == VariantTy.F64;
-    else                           return ty == VariantTy.ManagedRef + idof<T>();
+         if (value instanceof bool) return ty == VariantTy.Bool;
+    else if (value instanceof i8)   return ty == VariantTy.I8;
+    else if (value instanceof i16)  return ty == VariantTy.I16;
+    else if (value instanceof i32)  return ty == VariantTy.I32;
+    else if (value instanceof i64)  return ty == VariantTy.I64;
+    else if (value instanceof u8)   return ty == VariantTy.U8;
+    else if (value instanceof u16)  return ty == VariantTy.U16;
+    else if (value instanceof u32)  return ty == VariantTy.U32;
+    else if (value instanceof u64)  return ty == VariantTy.U64;
+    else if (value instanceof f32)  return ty == VariantTy.F32;
+    else if (value instanceof f64)  return ty == VariantTy.F64;
+    else                            return ty == VariantTy.ManagedRef + idof<T>();
   }
 
   @unsafe private __visit(cookie: u32): void {
