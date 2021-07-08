@@ -1,6 +1,6 @@
 import { Variant } from "../index";
 
-describe("instantiation", () => {
+describe("Variant/from, Variant/is, Variant/get", () => {
   it("should init as i32 type", () => {
     let val = Variant.from(123);
     expect(val.is<i32>()).toBe(true);
@@ -15,9 +15,14 @@ describe("instantiation", () => {
   });
 
   it("should init as f64 type", () => {
-    let val = Variant.from(123.0);
+    let val = Variant.from(-123.0);
     expect(val.is<f64>()).toBe(true);
-    expect(val.get<f64>()).toBe(123.0);
+    expect(val.get<f64>()).toBe(-123.0);
+  });
+
+  it("should init as NaN value", () => {
+    let val = Variant.from(NaN);
+    expect(val.get<f64>()).toBeNaN();
   });
 
   it("should init as bool type", () => {
@@ -46,5 +51,20 @@ describe("instantiation", () => {
     expect(val.get<i32[]>()[0]).toBe(1);
     expect(val.get<i32[]>()[1]).toBe(2);
     expect(val.get<i32[]>()[2]).toBe(3);
+  });
+
+  it("should init as variant type", () => {
+    let val = Variant.from(Variant.from(123));
+    expect(val.is<Variant>()).toBe(true);
+    expect(val.get<Variant>().get<i32>()).toBe(123);
+  });
+});
+
+describe("Variant/set", () => {
+  it("should set variant(i32) as variant(string)", () => {
+    let val = Variant.from(123);
+    val.set('foobaz');
+    expect(val.is<string>()).toBe(true);
+    expect(val.get<string>()).toBe('foobaz');
   });
 });
