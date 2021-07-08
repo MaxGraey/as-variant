@@ -110,4 +110,10 @@ export class Variant {
     else if (type instanceof f64)  return ty == VariantTy.F64;
     else                           return ty == VariantTy.Ref + idof<T>();
   }
+
+  @unsafe private __visit(cookie: u32): void {
+    if (this.discriminator >= VariantTy.Ref) {
+      __visit(<usize>this.value, cookie);
+    }
+  }
 }
