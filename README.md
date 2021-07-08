@@ -37,7 +37,9 @@ dict.set('num', Variant.from(124.0))
 
 dict.set('arr', Variant.from([1, 2, 3]))
 
-assert(dict.get<i32[]>('arr')[2] == 3);
+assert(dict.get('arr').get<i32[]>()[2] == 3);
+// or
+assert(dict['arr'].get<i32[]>()[2] == 3);
 ```
 
 which equivalent to JavaScript:
