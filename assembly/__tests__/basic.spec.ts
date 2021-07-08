@@ -1,0 +1,50 @@
+import { Variant } from "../index";
+
+describe("instantiation", () => {
+  it("should init as i32 type", () => {
+    let val = Variant.from(123);
+    expect(val.is<i32>()).toBe(true);
+    expect(val.get<i32>()).toBe(123);
+  });
+
+  it("should init as f32 type", () => {
+    let val = Variant.from<f32>(123.0);
+    expect(val.is<f32>()).toBe(true);
+    expect(val.is<f64>()).toBe(false);
+    expect(val.get<f32>()).toBe(<f32>123.0);
+  });
+
+  it("should init as f64 type", () => {
+    let val = Variant.from(123.0);
+    expect(val.is<f64>()).toBe(true);
+    expect(val.get<f64>()).toBe(123.0);
+  });
+
+  it("should init as bool type", () => {
+    let val = Variant.from(true);
+    expect(val.is<bool>()).toBe(true);
+    expect(val.is<u8>()).toBe(false);
+    expect(val.get<bool>()).toBe(true);
+  });
+
+  it("should init as u8 type", () => {
+    let val = Variant.from<u8>(0xFF);
+    expect(val.is<u8>()).toBe(true);
+    expect(val.get<u8>()).toBe(0xFF);
+  });
+
+  it("should init as string type", () => {
+    let val = Variant.from("foobaz");
+    expect(val.is<string>()).toBe(true);
+    expect(val.get<string>()).toBe("foobaz");
+  });
+
+  it("should init as array type", () => {
+    let val = Variant.from([1, 2, 3]);
+    expect(val.is<i32[]>()).toBe(true);
+    expect(val.is<Int32Array>()).toBe(false);
+    expect(val.get<i32[]>()[0]).toBe(1);
+    expect(val.get<i32[]>()[1]).toBe(2);
+    expect(val.get<i32[]>()[2]).toBe(3);
+  });
+});
