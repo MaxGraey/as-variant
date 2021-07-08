@@ -122,7 +122,8 @@ export class Variant {
 
   @unsafe private __visit(cookie: u32): void {
     if (this.discriminator >= VariantTy.ManagedRef) {
-      __visit(<usize>this.value, cookie);
+      let val = <usize>this.value;
+      if (val) __visit(val, cookie);
     }
   }
 }
