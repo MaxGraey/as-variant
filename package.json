@@ -16,7 +16,7 @@
   "scripts": {
     "build:untouched": "asc assembly/index.ts --target debug",
     "build:optimized": "asc assembly/index.ts --target release",
-    "build": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "build": "npm run build:untouched && npm run build:optimized",
     "test": "asp --verbose",
     "test:ci": "asp --summary --nologo"
   },
