@@ -94,6 +94,9 @@ export class Variant {
       // @ts-ignore
       return reinterpret<f64>(val);
     } else if (isReference<T>()) {
+      if (!isNullable<T>() && !val) {
+        throw new Error("unexpected null");
+      }
       return changetype<T>(<usize>val);
     } else {
       // @ts-ignore
