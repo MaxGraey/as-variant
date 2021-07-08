@@ -64,12 +64,10 @@ export class Variant {
     if (isReference<T>()) {
       this.value = changetype<usize>(value);
       this.discriminator = VariantTy.Ref + idof<T>();
-      return;
     } else {
       // @ts-ignore
       this.value = <u64>value;
       this.discriminator = ty;
-      return;
     }
   }
 
