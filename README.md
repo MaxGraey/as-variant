@@ -22,9 +22,10 @@ vNum.set(2.0)                      // now stored as f64
 assert(vNum.is<f64>())             // ok
 assert(!vStr.is<f64>())            // ok
 assert(vStr.is<string>())          // ok
+assert(vFoo.is<Foo>())             // ok
 
-let valF64 = vNum.get<f64>()       // safely extract value
-let tryStr = vNum.get<string>()    // will throw exception!
+let valF64   = vNum.get<f64>()     // safely extract value
+let willFail = vNum.get<string>()  // will throw exception!
 ```
 
 ### Use as value for Any Dynamic Dictionary
