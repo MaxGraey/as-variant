@@ -37,18 +37,18 @@ export class Variant {
   }
 
   private discriminator: i32;
-  private _data: u64;
+  private storage: u64;
 
   private constructor() { unreachable(); }
 
   @inline set<T>(value: T): void {
     this.discriminator = DISCRIMINATOR<T>();
-    store<T>(changetype<usize>(this), value, offsetof<Variant>("_data"));
+    store<T>(changetype<usize>(this), value, offsetof<Variant>("storage"));
   }
 
   @inline get<T>(): T {
     if (!this.is<T>()) throw new Error("type mismatch");
-    let value = load<T>(changetype<usize>(this), offsetof<Variant>("_data"));
+    let value = load<T>(changetype<usize>(this), offsetof<Variant>("storage"));
     if (isReference<T>() && !isNullable<T>()) {
       if (!value) throw new Error("unexpected null");
     }
@@ -61,7 +61,7 @@ export class Variant {
 
   @unsafe private __visit(cookie: u32): void {
     if (this.discriminator >= Discriminator.ManagedRef) {
-      let ptr = load<usize>(changetype<usize>(this), offsetof<Variant>("_data"));
+      let ptr = load<usize>(changetype<usize>(this), offsetof<Variant>("storage"));
       if (ptr) __visit(ptr, cookie);
     }
   }
