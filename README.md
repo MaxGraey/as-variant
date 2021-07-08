@@ -3,7 +3,7 @@ Variant Data Type for AssemblyScript
 
 [![npm](https://img.shields.io/npm/v/as-variant.svg?color=007acc&logo=npm)](https://www.npmjs.com/package/as-variant)
 
-Supports any builtin types like i32, bool, string and any custom classes.
+Supports any builtin types like i32, bool, string and any custom classes (managed and unmanaged).
 
 ### Basic Usage
 
