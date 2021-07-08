@@ -27,7 +27,7 @@ function DISCRIMINATOR<T>(): Discriminator {
   return unreachable();
 }
 
-// @ts-ignore
+// @ts-ignore: decorator
 @inline
 const STORAGE = offsetof<Variant>("storage");
 
