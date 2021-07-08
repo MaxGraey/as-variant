@@ -86,18 +86,18 @@ export class Variant {
   }
 
   @inline uncheckedGet<T>(): T {
-    let type!: T;
+    let type!: T, val = this.value;
     if (type instanceof f32) {
       // @ts-ignore
-      return reinterpret<f32>(<u32>this.value);
+      return reinterpret<f32>(<u32>val);
     } else if (type instanceof f64) {
       // @ts-ignore
-      return reinterpret<f64>(this.value);
+      return reinterpret<f64>(val);
     } else if (isReference<T>()) {
-      return changetype<T>(<usize>this.value);
+      return changetype<T>(<usize>val);
     } else {
       // @ts-ignore
-      return <T>this.value;
+      return <T>val;
     }
   }
 
@@ -122,8 +122,8 @@ export class Variant {
 
   @unsafe private __visit(cookie: u32): void {
     if (this.discriminator >= VariantTy.ManagedRef) {
-      let val = <usize>this.value;
-      if (val) __visit(val, cookie);
+      let ptr = <usize>this.value;
+      if (ptr) __visit(ptr, cookie);
     }
   }
 }
