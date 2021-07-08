@@ -27,6 +27,10 @@ function DISCRIMINATOR<T>(): Discriminator {
   return unreachable();
 }
 
+// @ts-ignore
+@inline
+const STORAGE = offsetof<Variant>("storage");
+
 @final
 export class Variant {
 
@@ -43,12 +47,12 @@ export class Variant {
 
   @inline set<T>(value: T): void {
     this.discriminator = DISCRIMINATOR<T>();
-    store<T>(changetype<usize>(this), value, offsetof<Variant>("storage"));
+    store<T>(changetype<usize>(this), value, STORAGE);
   }
 
   @inline get<T>(): T {
     if (!this.is<T>()) throw new Error("type mismatch");
-    let value = load<T>(changetype<usize>(this), offsetof<Variant>("storage"));
+    let value = load<T>(changetype<usize>(this), STORAGE);
     if (isReference<T>() && !isNullable<T>()) {
       if (!value) throw new Error("unexpected null");
     }
@@ -61,7 +65,7 @@ export class Variant {
 
   @unsafe private __visit(cookie: u32): void {
     if (this.discriminator >= Discriminator.ManagedRef) {
-      let ptr = load<usize>(changetype<usize>(this), offsetof<Variant>("storage"));
+      let ptr = load<usize>(changetype<usize>(this), STORAGE);
       if (ptr) __visit(ptr, cookie);
     }
   }
