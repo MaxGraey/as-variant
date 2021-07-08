@@ -10,7 +10,7 @@ export enum VariantTy {
 
 @final
 export class Variant {
-  static from<T>(value: T): Variant {
+  @inline static from<T>(value: T): Variant {
     let ty!: VariantTy;
          if (value instanceof bool) ty = VariantTy.Bool;
     else if (value instanceof i8)   ty = VariantTy.I8;
