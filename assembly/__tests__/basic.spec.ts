@@ -72,13 +72,11 @@ describe("Variant/set", () => {
 describe("Variant/get exceptions", () => {
   it("should throw exceptions", () => {
     throws("should throw for get<string>()", () => {
-      let val = Variant.from(123);
-      let _ = val.get<string>();
+      let _ = Variant.from(123).get<string>();
     });
 
     throws("should throw for get<f32>()", () => {
-      let val = Variant.from(123);
-      let _ = val.get<f32>();
+      let _ = Variant.from(123).get<f32>();
     });
   });
 });
