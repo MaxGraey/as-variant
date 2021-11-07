@@ -59,6 +59,10 @@ export class Variant {
     return value;
   }
 
+  @unsafe @inline getUnchecked<T>(): T {
+    return load<T>(changetype<usize>(this), STORAGE);
+  }
+
   @inline is<T>(): bool {
     return this.discriminator == DISCRIMINATOR<T>();
   }

@@ -28,6 +28,14 @@ let valF64   = vNum.get<f64>()    // safely extract value
 let willFail = vNum.get<string>() // will throw exception!
 ```
 
+### Unsafe Usage:
+
+```ts
+let vNum = Variant.from(123)
+// `getUnchecked` skips all checks. It may be danger.
+assert(vNum.getUnchecked() == 123)
+```
+
 ### Use as value for Any Dynamic Dictionary
 
 ```ts
