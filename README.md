@@ -9,7 +9,9 @@ Supports any builtin types like i32, bool, string and any custom classes (manage
 ### Basic Usage
 
 ```ts
-import { Variant } from 'as-variant'
+import { Variant } from 'as-variant/assembly'
+// before 0.20.x
+// import { Variant } from 'as-variant'
 
 class Foo { }
 
