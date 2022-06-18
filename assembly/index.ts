@@ -45,6 +45,10 @@ export class Variant {
 
   private constructor() { unreachable(); }
 
+  @inline get id(): i32 {
+    return this.discriminator;
+  }
+
   @inline set<T>(value: T): void {
     this.discriminator = DISCRIMINATOR<T>();
     store<T>(changetype<usize>(this), value, STORAGE);

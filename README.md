@@ -26,6 +26,8 @@ assert(!vStr.is<f64>())           // ok
 assert(vStr.is<string>())         // ok
 assert(vFoo.is<Foo>())            // ok
 
+assert(vNum.id != vStr.id)        // compare dynamic IDs
+
 let valF64   = vNum.get<f64>()    // safely extract value
 let willFail = vNum.get<string>() // will throw exception!
 ```
