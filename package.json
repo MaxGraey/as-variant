@@ -1,6 +1,6 @@
 {
   "name": "as-variant",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "ascMain": "assembly/index.ts",
   "main": "assembly/index.ts",
   "description": "Variant data type for AssemblyScript.",
