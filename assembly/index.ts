@@ -40,6 +40,10 @@ export class Variant {
     return out;
   }
 
+  @inline static idof<T>(): i32 {
+    return DISCRIMINATOR<T>();
+  }
+
   private discriminator: i32;
   private storage: u64;
 

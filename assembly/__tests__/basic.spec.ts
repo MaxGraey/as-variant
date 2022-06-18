@@ -68,10 +68,10 @@ describe("Variant/id", () => {
     let _u8  = Variant.from<u8>(3);
     let _i32  = Variant.from(123);
     let _foo  = Variant.from(new Foo);
-    expect(_bool.id).toBe(0);
-    expect(_i32.id).toBe(3);
-    expect(_u8.id).toBe(5);
-    expect(_foo.id).toBe(12 + idof<Foo>());
+    expect(_bool.id).toBe(Variant.idof<bool>());
+    expect(_i32.id).toBe(Variant.idof<i32>());
+    expect(_u8.id).toBe(Variant.idof<u8>());
+    expect(_foo.id).toBe(Variant.idof<Foo>());
   });
 });
 
