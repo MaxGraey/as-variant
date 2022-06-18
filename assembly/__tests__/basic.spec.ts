@@ -1,5 +1,7 @@
 import { Variant } from "../index";
 
+class Foo {}
+
 describe("Variant/from, Variant/is, Variant/get", () => {
   it("should init as i32 type", () => {
     let val = Variant.from(123);
@@ -57,6 +59,19 @@ describe("Variant/from, Variant/is, Variant/get", () => {
     let val = Variant.from(Variant.from(123));
     expect(val.is<Variant>()).toBe(true);
     expect(val.get<Variant>().get<i32>()).toBe(123);
+  });
+});
+
+describe("Variant/id", () => {
+  it("should get ids", () => {
+    let _bool = Variant.from(true);
+    let _u8  = Variant.from<u8>(3);
+    let _i32  = Variant.from(123);
+    let _foo  = Variant.from(new Foo);
+    expect(_bool.id).toBe(Variant.idof<bool>());
+    expect(_i32.id).toBe(Variant.idof<i32>());
+    expect(_u8.id).toBe(Variant.idof<u8>());
+    expect(_foo.id).toBe(Variant.idof<Foo>());
   });
 });
 

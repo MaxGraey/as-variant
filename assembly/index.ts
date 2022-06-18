@@ -40,10 +40,18 @@ export class Variant {
     return out;
   }
 
+  @inline static idof<T>(): i32 {
+    return DISCRIMINATOR<T>();
+  }
+
   private discriminator: i32;
   private storage: u64;
 
   private constructor() { unreachable(); }
+
+  @inline get id(): i32 {
+    return this.discriminator;
+  }
 
   @inline set<T>(value: T): void {
     this.discriminator = DISCRIMINATOR<T>();
