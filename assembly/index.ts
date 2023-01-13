@@ -12,7 +12,7 @@ const enum Discriminator {
 function DISCRIMINATOR<T>(): Discriminator {
   if (isManaged<T>())   return Discriminator.ManagedRef + idof<T>();
   if (isReference<T>()) return Discriminator.UnmanagedRef;
-  let value!: T;
+  const value: T = 0;
   if (value instanceof bool) return Discriminator.Bool;
   if (value instanceof i8)   return Discriminator.I8;
   if (value instanceof i16)  return Discriminator.I16;
