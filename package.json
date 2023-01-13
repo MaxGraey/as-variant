@@ -21,7 +21,7 @@
     "test:ci": "asp --summary --nologo"
   },
   "devDependencies": {
-    "@as-pect/cli": "^6.2.4",
+    "@as-pect/cli": "^8.0.1",
     "assemblyscript": "^0.26.2"
   },
   "files": [
