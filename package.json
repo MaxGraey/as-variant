@@ -17,12 +17,12 @@
     "build:untouched": "asc assembly/index.ts --target debug",
     "build:optimized": "asc assembly/index.ts --target release",
     "build": "npm run build:untouched && npm run build:optimized",
-    "test": "asp --verbose",
-    "test:ci": "asp --summary --nologo"
+    "test": "asp --config as-pect.config.mjs --verbose ",
+    "test:ci": "asp --config as-pect.config.mjs --summary --nologo"
   },
   "devDependencies": {
     "@as-pect/cli": "^8.0.1",
-    "assemblyscript": "^0.26.2"
+    "assemblyscript": "^0.27.0"
   },
   "files": [
     "assembly/",
